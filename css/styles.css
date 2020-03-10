@@ -1,17 +1,45 @@
+.backdrop {
+    background-image: url("../images/header-photo.jpg");
+    background-size: cover;
+    height: 34vh;
+}
+
+.text {
+    border: 4px solid #fff;
+    background: rgb(38, 39, 45);
+    height: 31vh;
+    margin: auto;
+    text-align: center;
+    font: bolder 12vw 'Alfa Slab One';
+    color: #fff;
+    mix-blend-mode: multiply;
+
+}
+
 #story-text {
     font-weight: 300;
     font-size: 1.2rem;
 }
 button#undo {
-    border: none;
-    background: none;
-    cursor: pointer;
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: rgb(38, 39, 45);
+    text-align: center;
+    transition: all 0.2s;
 }
 button#undo:hover {
     border: none;
     background: #333;
     color: #fff;
 }
+
 #choices {
     list-style-type: none;
     text-align: center;
@@ -21,19 +49,23 @@ button#undo:hover {
 #choices li {
     white-space: normal;
     padding: 0.5rem;
-    background: #e8e8e8;
+    color: black;
+    background-color: white;
+    border: 2px solid navy;
     font-size: 0.9rem;
     cursor: pointer;
     margin: 1rem 0;
+    transition-duration: .4s;
 }
 #choices li:hover {
-    background: #333;
+    background: navy;
     color: #fff;
 }
 
 h1, h2 {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Alfa Slab One;
 }
+
 body {
     width: 80%;
     margin: 1rem auto;
@@ -43,6 +75,4 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     border: 4px double #666;
 }
-html {
-    background: #e8e8e8 url('../images/vertical-waves.png') repeat;
-}
+
