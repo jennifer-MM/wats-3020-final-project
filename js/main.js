@@ -1,4 +1,3 @@
-
 let choiceList = ['p1'];
 let currentPage = null;
 
@@ -14,7 +13,7 @@ let currentPage = null;
 
 function getCurrentPage(slug) {
     let newPage = storyData[slug];
-  return newPage;
+    return newPage;
 }
 
 // TODO: Create a function called `recordChoice()` that will accept a `slug`
@@ -32,7 +31,7 @@ function recordChoice(slug) {
 
 function undoChoice() {
     choiceList.pop();
-    let slug = choiceList[choiceList.length-1];
+    let slug = choiceList[choiceList.length - 1];
     return slug;
 
 }
@@ -110,119 +109,116 @@ var storyData = {
             link: 'p2'
         }, {
             text: `Hardwired by Metallica.`,
-            link: 'homeEnd'
+            link: 'p3'
         }]
     },
-    homeEnd: {
-        text: `Drinks at the Gilded Club!
-                <br><br>.`,
-                
+    gildedClub: {
+        text: `Drinks at the Gilded Club. <br><br> If you want to wear a fedora or flapper dress you'll feel at home.`,
+
         choices: [{
             text: `Reserve a seat at the bar at 9 p.m.`,
-            link: 'p1'
+            link: 'reservePlan'
         }]
     },
     p2: {
         text: `What kind of pet do you want?`,
         choices: [{
-            text: `Of course I want a bearded dragon... or maybe a snake`,
+            text: `I want a bearded dragon... or maybe a snake`,
             link: 'p3'
         }, {
             text: `I'm a dog person`,
-            link: 'homeEnd'
-        }]
-    },
-    p3: {
-        text: `What would you not eat?`,
-        choices: [{
-            text: `Reptiles. I would never eat a snake`,
-            link: 'basketEnd'
-        }, {
-            text: `Chocolate lava cake. No way.`,
-            link: 'p4'
-        }]
-    },
-    basketEnd: {
-        text: `You fly directly into a picnic basket, which slams shut behind you.
-                You are stuck until some kind human comes to open the basket.
-                But at least the cat didn't eat you!
-                <br><br>
-                The End`,
-        choices: [{
-            text: `Start over?`,
-            link: 'p1'
-        }]
-    },
-    p4: {
-        text: `You zoom towards the cat, who is surprised by the direct approach
-                and leaps off the table. You pull up sharply and make it over the
-                big oak tree to a safe cruising altitude. The sun is shining,
-                the wind is beneath your wings, and you have a beak full of
-                cheese.`,
-        choices: [{
-            text: `Find somewhere nice to eat your cheese.`,
-            link: 'p5'
-        }]
-    },
-    p5: {
-        text: `You find a secluded fence post in the middle of a large field
-                full of wildflowers. You decide this will be a wonderful place
-                to have a snack.
-                <br><br>
-                Just as you settle down you see Mr. Fox strolling down the path
-                towards your fence post.`,
-        choices: [{
-            text: `Say, "Hello Mr. Fox! Join me for cheese."`,
-            link: 'shareCheese'
-        }, {
-            text: `Keep a wary eye on Mr. Fox.`,
             link: 'p6'
         }]
     },
-    shareCheese: {
-        text: `You hop down to the ground and Mr. Fox helps you break the cheese
-                in half. He is very grateful to you for sharing your cheese, and
-                he gives you a lovely ribbon for your nest.
-                <br><br>
-                The End`,
+    p3: {
+        text: `What was ET's favorite candy?`,
         choices: [{
-            text: `Start over?`,
-            link: 'p1'
+            text: `Reese Pieces`,
+            link: 'gildedClub'
+        }, {
+            text: `M&Ms`,
+            link: 'p4'
+        }]
+    },
+    suBasketball: {
+        text: `Get ready to cheer on the Orange in the Dome!`,
+        choices: [{
+            text: `Reserve your tickets`,
+            link: 'reservePlan'
+        }]
+    },
+    p4: {
+        text: `<i>Sorry, ET enjoyed eating Reeses Pieces</i><br><br>
+        Pick a Saturday morning breakfast.`,
+        choices: [{
+            text: `Eggs and bacon`,
+            link: 'p5'
+        }, {
+            text: `Smoothie`,
+            link: `p7`
+        }]
+    },
+    p5: {
+        text: `It's your friend's housewarming. Gift or no gift?`,
+        choices: [{
+            text: `Plant`,
+            link: 'p6'
+        }, {
+            text: `Whiskey`,
+            link: 'p8'
+        }]
+    },
+    donutsHike: {
+        text: `Enjoy a couple Cereal Killer donuts and coffee before you take a hike at Green Lakes State Park.`, 
+                
+        choices: [{
+            text: `Reserve your donuts`,
+            link: 'reservePlan'
         }]
     },
     p6: {
-        text: `Mr. Fox approaches and says, "Hello crow! It's been so
-                long since we've seen each other. I've missed hearing your
-                lovely singing voice. Won't you sing me a tune before I go?`,
+        text: `What search engine do you use?`,
         choices: [{
-            text: `Sing a song for Mr. Fox.`,
-            link: 'dropCheeseEnd'
+            text: `Google`,
+            link: 'donutsHike'
         }, {
-            text: `Remain silent.`,
+            text: `Bing`,
             link: 'p7'
         }]
     },
-    dropCheeseEnd: {
-        text: `You open your beak to sing a lovely song, and your cheese comes
-                tumbling out. Mr. Fox quickly snaps the cheese out of the air
-                as it falls and gobbles it up!
-                <br><br>
-                The End`,
+    p8: {
+        text: `When you turn on your TV, what do you see?`,
         choices: [{
-            text: `Start over?`,
-            link: 'p1'
+            text: `Apple TV home screen.`,
+            link: `suBasketball`,
+        }, {
+            text: `cable.`,
+            link: 'p7'
         }]
     },
     p7: {
-        text: `You remain silent through all of Mr. Fox's flattery. In the end,
-                he knows you won't fall for his tricks, and he leaves you alone.
-                <br><br>
-                Finally able to relax in quiet, you enjoy your well-earned
-                cheese.
-                <br><br>
-                The End`,
+        text: `How much water do you drink each day?`,
         choices: [{
-            text: `Play again?`,
+            text: `I don't know. I don't count.`,
+            link: `turningStone`,
+        }, {
+            text: `Definitely on my way to a gallon. But I'll check my app`,
+            link: 'gildedClub'
+        }]
+    },
+
+    turningStone: {
+        text: `Let someone else wait on you- Enjoy a nice steak, a round of golf, or gmae of black jack at the Turning Stone casino`, 
+                
+        choices: [{
+            text: `Reserve your table for dinner`,
+            link: 'reservePlan'
+        }]
+    },
+    reservePlan: {
+        text: `Great! See you there`,
+        choices: [{
+            text: `Looking for different plans?`,
             link: 'p1'
         }]
     }
