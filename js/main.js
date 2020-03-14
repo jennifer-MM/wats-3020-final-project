@@ -64,10 +64,27 @@ var makePlans = {
         ]
     },
     p2: {
-        text: `There's plenty to do inside. Do you want to go somewhere quiet?`,
+        text: `Don't worry, there's plenty to do inside. Do you like basketball`,
 
         options: [{
-            text: ``
+            text: `Yes!`,
+            link: 'p4'
+        }, {
+
+            text: 'Anything but basketball',
+            link: 'p5'
+        }
+    ]
+    
+},
+
+    p4: [{
+        text: `Go cheer on the Orange at the SU Dome. <br><br> Do you want to reserve seats?`,
+        options:[{
+            text: `Yes!`
+            
         }]
+
     }
-}
+
+    ]
