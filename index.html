@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Where to go in Central NY</title>
+    <title>What to do in Central NY</title>
     <meta name="description" content="WATS-3020-Final-Project">
     <meta name="author" content="Jennifer Menard">
-    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,25 +15,42 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <script src="js/main.js" defer></script>
+    <script src="https://kit.fontawesome.com/f4b1106d41.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!--header-->
-    <div class="backdrop">
-        <div class="header-box">
-            <h1 class= "text multiply" id="story-title">Where to go in Central NY</h1>
-        </div>
+    <div class="header">
+        <h1>Where to visit in CNY</h1>
+        <p>We are home to the best NY has to offer. This page is a collection of where to go and what to
+            see.</p>
     </div>
-    
-        <h2>We are home to the best NY has to offer. This page is a collection of where to go and what to
-            see. <br><br> Answer three questions and we'll choose your weekend plans</p>
-        <hr>
-        <h2 id="story-text">Answer three questions and we'll choose your weekend plans-</h2>
-        <ul id="choices">
-            <li id="choice1" data-slug>First Choice.</li>
-            <li id="choice2">Second Choice.</li>
-        </ul>
-        <p class="undo-link"><button id="undo">Undo last choice.</button></p>
+    <!--flex grid-->
+
+    <div class="carousel-container">
+        <i class="fas fa-chevron-right" id="nextBtn"></i>
+        <i class="fas fa-chevron-left" id="prevBtn"></i>
+
+        <div class="carousel-slide">
+            <img src="images/person-hiking.jpg" id="lastClone" alt="person walking in woods" />
+            <img src="images/city-street.jpg" alt="busy city street" />
+
+            <img src="images/drinks-bar.jpg" alt="drinks on bar table" />
+
+            <img src="images/person-hiking.jpg" alt="person walking in woods" />
+            <img src="images/city-street.jpg" id="firstClone" alt="busy city street" />
+
+        </div>
+
+
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+
+
 </body>
 
 </html>
