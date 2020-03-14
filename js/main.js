@@ -39,3 +39,35 @@ carouselSlide.addEventListener('transitionend', () => {
         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
     }
 });
+
+
+///beginning the option JS
+
+
+let optionList = [];
+let currentPage = null;
+
+var makePlans = {
+    title: "Let's make some plans",
+    p1: {
+        text: `Do you want to enjoy the outdoors?`,
+
+        options: [{
+                text: `No, its way too cold outside, lets stay inside.`,
+                link: 'p2'
+            }, {
+
+                text: `Yes! I want to enjoy the fresh air!`,
+                link: 'p3'
+            }
+
+        ]
+    },
+    p2: {
+        text: `There's plenty to do inside. Do you want to go somewhere quiet?`,
+
+        options: [{
+            text: ``
+        }]
+    }
+}
