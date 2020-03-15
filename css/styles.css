@@ -2,23 +2,12 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    
 }
 
-.grid-container {
-    display: grid;
-    grid-column-gap: 50px;
 
-}
-
-/* Style the body 
-  body {
-    font-family: Arial;
-    margin: 0;
-  } */
 
 /* Header/logo Title */
-.header, h2 {
+.header, h1 {
    
     font: 'Alfa Slab One';
     padding: 60px;

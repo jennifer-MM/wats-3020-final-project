@@ -44,47 +44,128 @@ carouselSlide.addEventListener('transitionend', () => {
 ///beginning the option JS
 
 
-let optionList = [];
+let optionsList = ['p1'];
 let currentPage = null;
 
-var makePlans = {
-    title: "Let's make some plans",
-    p1: {
-        text: `Do you want to enjoy the outdoors?`,
+function getCurrentPage(input) {
+    let newPage = planData[input];
+    return newPage;
+}
 
-        options: [{
-                text: `No, its way too cold outside, lets stay inside.`,
-                link: 'p2'
-            }, {
+function recordOptions(input) {
+    optionList.push(input);
+    console.log(optionsList);
+}
 
-                text: `Yes! I want to enjoy the fresh air!`,
-                link: 'p3'
-            }
 
-        ]
-    },
-    p2: {
-        text: `Don't worry, there's plenty to do inside. Do you like basketball`,
+function undoOptions() {
+    optionsList.pop();
+    let input = optionsList[optionsList.length - 1];
+    return input;
+}
+    let pageContent = document.getElementById('plans-text');
+    let optionsUL = document.querySelector('#options');
 
-        options: [{
-            text: `Yes!`,
-            link: 'p4'
-        }, {
-
-            text: 'Anything but basketball',
-            link: 'p5'
+    function updatePage(newPage) {
+        pageContent.innerHTML = newPage.text;
+        optionsUL.innerHTML = '';
+        for (let choice of newPage.options) {
+            let newLI = document.createElement('li');
+            newLI.innerHTML = options.text;
+            newLI.setAttribute('data-input', options.link);
+            optionsUL.appendChild(newLI);
+            //updatePage(currentPage);
         }
-    ]
-    
-},
-
-    p4: [{
-        text: `Go cheer on the Orange at the SU Dome. <br><br> Do you want to reserve seats?`,
-        options:[{
-            text: `Yes!`
-            
-        }]
-
+        addEventListeners();
     }
 
-    ]
+    function changePage(input) {
+        recordOptions(input);
+        let currentPage = getCurrentPage(input);
+        updatePage(currentPage);
+    }
+
+    var planData = {
+        title: "Let's make some plans",
+        p1: {
+            text: `Do you want to enjoy the outdoors?`,
+
+            options: [{
+                    text: `No, its way too cold outside, lets stay inside.`,
+                    link: 'p2'
+                }, {
+
+                    text: `Yes! I want to enjoy the fresh air!`,
+                    link: 'p3'
+                }
+
+            ]
+        },
+
+        p2: {
+            text: `Don't worry, there's plenty to do inside. Do you like basketball`,
+
+            options: [{
+                text: `Yes!`,
+                link: 'p4'
+            }, {
+
+                text: 'Anything but basketball',
+                link: 'p5'
+            }]
+
+        },
+
+        p3: {
+            text: `Great decision! We have beautiful hiking trails. Enjoy a guided hike at Green Lakes Park.`,
+
+            options: [{
+                text: `Yes! I want to reserve my spot.`,
+                link: 'reservation'
+            }, {
+
+                text: 'Anything but basketball',
+                link: 'p5'
+            }]
+
+        },
+
+        p4: {
+            text: `Go cheer on the Orange at the SU Dome. <br><br> Do you want to reserve seats?`,
+            options: [{
+                text: `Yes!`,
+                link: 'reservation'
+            }, {
+
+                text: `No thanks!`,
+                link: 'p1'
+            }]
+        },
+
+
+    };
+
+    let title = document.querySelector('#plans-text');
+    title.innerHTML = planData.title;
+
+
+    function addEventListeners() {
+        let options = document.querySelectorAll('#options li');
+        for (options of options) {
+            options.addEventListener('click', function (e) {
+                console.log(`Moving to page: ${e.target.dataset.input}`);
+                changePage(e.target.dataset.input);
+            })
+        }
+    }
+
+    let undo = document.querySelector('#undo');
+    undo.addEventListener('click', function (e) {
+        console.log('Undoing last choice.');
+        let input = undoChoice();
+        currentPage = getCurrentPage(slug);
+        updatePage(currentPage);
+    })
+
+    currentPage = planData.p1;
+    updatePage(currentPage);
