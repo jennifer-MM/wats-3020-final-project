@@ -71,4 +71,32 @@
     background-color:gray;
     padding: 20px;
 } */
+button#undo {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
 
+button#undo:hover {
+    border: none;
+    background: #333;
+    color: #fff;
+}
+#options {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+    white-space: nowrap;
+}
+#options li {
+    white-space: normal;
+    padding: 0.5rem;
+    background: #e8e8e8;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+#options li:hover {
+    background: rgb(199, 27, 113);
+    color: #fff;
+}

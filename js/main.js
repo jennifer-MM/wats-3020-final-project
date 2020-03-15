@@ -69,9 +69,9 @@ function undoOptions() {
     function updatePage(newPage) {
         pageContent.innerHTML = newPage.text;
         optionsUL.innerHTML = '';
-        for (let choice of newPage.options) {
+        for (let option of newPage.options) {
             let newLI = document.createElement('li');
-            newLI.innerHTML = options.text;
+            newLI.innerHTML = option.text;
             newLI.setAttribute('data-input', options.link);
             optionsUL.appendChild(newLI);
             //updatePage(currentPage);
@@ -88,7 +88,7 @@ function undoOptions() {
     var planData = {
         title: "Let's make some plans",
         p1: {
-            text: `Do you want to enjoy the outdoors?`,
+            text: `Do you enjoy the outdoors?`,
 
             options: [{
                     text: `No, its way too cold outside, lets stay inside.`,
@@ -145,14 +145,14 @@ function undoOptions() {
 
     };
 
-    let title = document.querySelector('#plans-text');
+    let title = document.querySelector('#plans-title');
     title.innerHTML = planData.title;
 
 
     function addEventListeners() {
         let options = document.querySelectorAll('#options li');
-        for (options of options) {
-            options.addEventListener('click', function (e) {
+        for (option of options) {
+            option.addEventListener('click', function (e) {
                 console.log(`Moving to page: ${e.target.dataset.input}`);
                 changePage(e.target.dataset.input);
             })
@@ -162,8 +162,8 @@ function undoOptions() {
     let undo = document.querySelector('#undo');
     undo.addEventListener('click', function (e) {
         console.log('Undoing last choice.');
-        let input = undoChoice();
-        currentPage = getCurrentPage(slug);
+        let input = undoOptions();
+        currentPage = getCurrentPage(input);
         updatePage(currentPage);
     })
 
