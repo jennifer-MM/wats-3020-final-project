@@ -53,7 +53,7 @@ function getCurrentPage(input) {
 }
 
 function recordOptions(input) {
-    optionList.push(input);
+    optionsList.push(input);
     console.log(optionsList);
 }
 
@@ -69,9 +69,9 @@ function undoOptions() {
     function updatePage(newPage) {
         pageContent.innerHTML = newPage.text;
         optionsUL.innerHTML = '';
-        for (let option of newPage.options) {
+        for (let options of newPage.options) {
             let newLI = document.createElement('li');
-            newLI.innerHTML = option.text;
+            newLI.innerHTML = options.text;
             newLI.setAttribute('data-input', options.link);
             optionsUL.appendChild(newLI);
             //updatePage(currentPage);
