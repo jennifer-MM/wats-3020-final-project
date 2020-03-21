@@ -106,7 +106,7 @@ button#undo:hover {
 
 /* modal CSS below*/
 
-.modal {
+.mymodal {
   display: none;
   position: fixed; 
   padding-top: 50px;
@@ -117,7 +117,12 @@ button#undo:hover {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
 }
-.modal-content {
+
+.modal.visible {
+  display: block;
+}
+
+  .fname {
   position: relative; 
   background-color: white;
   padding: 20px; 
@@ -128,6 +133,7 @@ button#undo:hover {
   animation-name: animatetop;
   animation-duration: 0.4s
 }
+
 .close-btn {
   float: right; 
   color: lightgray; 

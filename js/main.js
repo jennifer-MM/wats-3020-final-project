@@ -1,200 +1,211 @@
 const carouselSlide = document.querySelector(`.carousel-slide`);
 const carouselImages = document.querySelectorAll(`.carousel-slide img`);
 
-//Buttons
-const prevBtn = document.querySelector('#prevBtn');
-const nextBtn = document.querySelector('#nextBtn');
 
-//counter
-let counter = 1;
-const size = carouselImages[0].clientWidth;
+//modal JS
+//this.makeReservation = document.querySelector('#make-reservation');
+//showMakeReservation() {
+    //displays the make reservation screen
+  //  this.makeReservation.setAttribute('form');
+//}
 
-carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
-//button listeners
-nextBtn.addEventListener('click', () => {
-    if (counter >= carouselImages.length - 1) return;
-    carouselSlide.style.transition = "transform 0.4s ease-in-out";
-    counter++;
-    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        //Buttons
+        const prevBtn = document.querySelector('#prevBtn');
+        const nextBtn = document.querySelector('#nextBtn');
 
-});
+        //counter
+        let counter = 1;
+        const size = carouselImages[0].clientWidth;
 
-prevBtn.addEventListener('click', () => {
-    if (counter <= 0) return;
-    carouselSlide.style.transition = "transform 0.4s ease-in-out";
-    counter--;
-    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-});
-
-carouselSlide.addEventListener('transitionend', () => {
-    if (carouselImages[counter].id === 'lastClone') {
-        carouselSlide.style.transition = "none";
-        counter = carouselImages.length - 2;
         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    }
-    if (carouselImages[counter].id === 'firstClone') {
-        carouselSlide.style.transition = "none";
-        counter = carouselImages.length - counter;
-        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    }
-});
 
+        //button listeners
+        nextBtn.addEventListener('click', () => {
+            if (counter >= carouselImages.length - 1) return;
+            carouselSlide.style.transition = "transform 0.4s ease-in-out";
+            counter++;
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
-///beginning the option JS
+        });
 
+        prevBtn.addEventListener('click', () => {
+            if (counter <= 0) return;
+            carouselSlide.style.transition = "transform 0.4s ease-in-out";
+            counter--;
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        });
 
-let optionsList = ['p1'];
-let currentPage = null;
-
-function getCurrentPage(input) {
-    let newPage = planData[input];
-    return newPage;
-}
-
-function recordOptions(input) {
-    optionsList.push(input);
-    console.log(optionsList);
-}
-
-
-function undoOptions() {
-    optionsList.pop();
-    let input = optionsList[optionsList.length - 1];
-    return input;
-}
-let pageContent = document.getElementById('plans-text');
-let optionsUL = document.querySelector('#options');
-
-function updatePage(newPage) {
-    pageContent.innerHTML = newPage.text;
-    optionsUL.innerHTML = '';
-    for (let options of newPage.options) {
-        let newLI = document.createElement('li');
-        newLI.innerHTML = options.text;
-        newLI.setAttribute('data-input', options.link);
-        optionsUL.appendChild(newLI);
-        //updatePage(currentPage);
-    }
-    addEventListeners();
-}
-
-function changePage(input) {
-    recordOptions(input);
-    let currentPage = getCurrentPage(input);
-    updatePage(currentPage);
-}
-
-let modalBtn = document.getElementById("modal-btn")
-let modal = document.querySelector(".modal")
-let closeBtn = document.querySelector(".close-btn")
-
-var planData = {
-    title: "Let's make some plans",
-    p1: {
-        text: `Do you enjoy the outdoors?`,
-
-        options: [{
-                text: `No, its way too cold outside, lets stay inside.`,
-                link: 'p2'
-            }, {
-
-                text: `Yes! I want to enjoy the fresh air!`,
-                link: 'p3'
+        carouselSlide.addEventListener('transitionend', () => {
+            if (carouselImages[counter].id === 'lastClone') {
+                carouselSlide.style.transition = "none";
+                counter = carouselImages.length - 2;
+                carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
             }
+            if (carouselImages[counter].id === 'firstClone') {
+                carouselSlide.style.transition = "none";
+                counter = carouselImages.length - counter;
+                carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            }
+        });
 
-        ]
-    },
 
-    p2: {
-        text: `Don't worry, there's plenty to do inside. Do you like basketball?`,
+        ///beginning the option JS
 
-        options: [{
-            text: `Yes!`,
-            link: 'p4'
-        }, {
 
-            text: 'Anything but basketball',
-            link: 'p5'
-        }]
+        let optionsList = ['p1'];
+        let currentPage = null;
 
-    },
+        function getCurrentPage(input) {
+            let newPage = planData[input];
+            return newPage;
+        }
 
-    p3: {
-        text: `Great decision! We have beautiful hiking trails. Enjoy a guided hike at Green Lakes Park.`,
+        function recordOptions(input) {
+            optionsList.push(input);
+            console.log(optionsList);
+        }
 
-        options: [{
-            text: `Yes! I want to reserve my spot.`,
-            link: 'reservation'
-        }, {
 
-            text: 'Anything but basketball',
-            link: 'p5'
-        }]
+        function undoOptions() {
+            optionsList.pop();
+            let input = optionsList[optionsList.length - 1];
+            return input;
+        }
+        let pageContent = document.getElementById('plans-text');
+        let optionsUL = document.querySelector('#options');
 
-    },
+        function updatePage(newPage) {
+            pageContent.innerHTML = newPage.text;
+            optionsUL.innerHTML = '';
+            for (let options of newPage.options) {
+                let newLI = document.createElement('li');
+                newLI.innerHTML = options.text;
+                newLI.setAttribute('data-input', options.link);
+                optionsUL.appendChild(newLI);
+                //updatePage(currentPage);
+            }
+            addEventListeners();
+        }
 
-    p4: {
-        text: `Go cheer on the Orange at the SU Dome. <br><br> Do you want to reserve seats?`,
-        options: [{
-            text: `Yes!`,
-            link: 'reservation'
-        }, {
+        function changePage(input) {
+            recordOptions(input);
+            let currentPage = getCurrentPage(input);
+            updatePage(currentPage);
 
-            text: `No thanks!`,
-            link: 'p1'
-        }]
-    },
+            if (input == "reservation") {
+                //pop up your modal
+                let myModal =
+                document.querySelector(".modal");
+                myModal.classList.add('visible');
+                myModal.classList.remove('visible');
 
-    p5: {
-        text: `Do you have many people to entertain? Go to Destiny USA Mall. <br><br> Your group of friends have many different 
+            } else {
+                recordOptions(input);
+                let currentPage =
+                getCurrentPage(input);
+                updatePage(currentPage);
+            }
+            
+        }
+
+        let modalBtn = document.getElementById("modal-btn")
+        let modal = document.querySelector(".modal")
+        let closeBtn = document.querySelector(".close-btn")
+
+        var planData = {
+            title: "Let's make some plans",
+            p1: {
+                text: `Do you enjoy the outdoors?`,
+
+                options: [{
+                        text: `No, its way too cold outside, lets stay inside.`,
+                        link: 'p2'
+                    }, {
+
+                        text: `Yes! I want to enjoy the fresh air!`,
+                        link: 'p3'
+                    }
+                ]
+            },
+
+            p2: {
+                text: `Don't worry, there's plenty to do inside. Do you like basketball?`,
+
+                options: [{
+                    text: `Yes!`,
+                    link: 'p4'
+                }, {
+                    text: 'Anything but basketball',
+                    link: 'p5'
+                }]
+            },
+
+            p3: {
+                text: `Great decision! We have beautiful hiking trails. Enjoy a guided hike at Green Lakes Park.`,
+                options: [{
+                    text: `Yes! I want to reserve my spot.`,
+                    link: 'reservation'
+                }, {
+                    text: 'Anything but basketball',
+                    link: 'p5'
+                }]
+            },
+
+            p4: {
+                text: `Go cheer on the Orange at the SU Dome. <br><br> Do you want to reserve seats?`,
+                options: [{
+                    text: `Yes!`,
+                    link: 'reservation'
+                }, {
+
+                    text: `No thanks!`,
+                    link: 'p1'
+                }]
+            },
+
+            p5: {
+                text: `Do you have many people to entertain? Go to Destiny USA Mall. <br><br> Your group of friends have many different 
             choices from going to the movies, obstacle course or people watching`,
-        options: [{
-            text: `Yes!`,
-            link: 'reservation'
-        }, {
+                options: [{
+                    text: `Yes!`,
+                    link: 'reservation'
+                }, {
+                    text: `No thanks!`,
+                    link: 'p1'
+                }]
+            },
 
-            text: `No thanks!`,
-            link: 'p1'
-        }]
-    },
+            reservation: {
+                text: ``,
+                options: [{
+                    text: ``,
+                    link: ''
+                }]
+            },
 
-    reservation: {
-        text: `Do you have many people to entertain? Go to Destiny USA Mall. Your group of friends have many different 
-            choices from going to the movies, obstacle course or people watching`,
-        options: [{
-            text: `Yes!`,
-            link: 'reservation'
-        }, {
+        };
 
-            text: `No thanks!`,
-            link: 'p1'
-        }]
-    },
-
-};
-
-let title = document.querySelector('#plans-title');
-title.innerHTML = planData.title;
+        let title = document.querySelector('#plans-title'); title.innerHTML = planData.title;
 
 
-function addEventListeners() {
-    let options = document.querySelectorAll('#options li');
-    for (option of options) {
-        option.addEventListener('click', function (e) {
-            console.log(`Moving to page: ${e.target.dataset.input}`);
-            changePage(e.target.dataset.input);
+        function addEventListeners() {
+            let options = document.querySelectorAll('#options li');
+            for (option of options) {
+                option.addEventListener('click', function (e) {
+                    console.log(`Moving to page: ${e.target.dataset.input}`);
+                    changePage(e.target.dataset.input);
+                })
+            }
+        }
+
+        let undo = document.querySelector('#undo'); undo.addEventListener('click', function (e) {
+            console.log('Undoing last choice.');
+            let input = undoOptions();
+            currentPage = getCurrentPage(input);
+            updatePage(currentPage);
         })
-    }
-}
 
-let undo = document.querySelector('#undo');
-undo.addEventListener('click', function (e) {
-    console.log('Undoing last choice.');
-    let input = undoOptions();
-    currentPage = getCurrentPage(input);
-    updatePage(currentPage);
-})
+        currentPage = planData.p1; updatePage(currentPage);
 
-currentPage = planData.p1;
-updatePage(currentPage);
+        //modal-info
